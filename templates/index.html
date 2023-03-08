@@ -7,8 +7,8 @@
 
 <div>
     <form id="upload-file" method="post" enctype="multipart/form-data">
-        <label for="imageUpload" class="upload-label">
-            Select Image
+        <label for="imageUpload" class="upload-label" >
+            Upload The MRI Image
         </label>
         <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
     </form>
@@ -18,8 +18,8 @@
             <div id="imagePreview">
             </div>
         </div>
-        <div>
-            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+        <div class="btn-div">
+            <button type="button" class="btn btn-primary btn-lg btn-pred" id="btn-predict">Diagnose</button>
         </div>
     </div>
 
@@ -28,6 +28,13 @@
     <h3 id="result">
         <span> </span>
     </h3>
+
+    <div class="result-yes res">
+        <h3>Yes, Brain tumor detected</h3>
+    </div>
+    <div class="result-no res">
+        <h3>No brain tumor detected</h3>
+    </div>
 
 </div>
 <body>

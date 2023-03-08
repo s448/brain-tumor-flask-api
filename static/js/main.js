@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.image-section').hide();
     $('.loader').hide();
     $('#result').hide();
-
+    $('.res').hide();
     // Upload Preview
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -22,6 +22,11 @@ $(document).ready(function () {
         $('#result').text('');
         $('#result').hide();
         readURL(this);
+        // $('.upload-label').hide();
+        $('.upload-label').text('Upload Another MRI Image');
+        let label = document.querySelector(".upload-label");
+        label.setAttribute("style","-webkit-transform: translate(0%, 0%);");
+
     });
 
     // Predict
@@ -31,7 +36,7 @@ $(document).ready(function () {
         // Show loading animation
         $(this).hide();
         $('.loader').show();
-
+        $('.upload-label').hide();
         // Make prediction by calling api /predict
         $.ajax({
             type: 'POST',
@@ -42,10 +47,13 @@ $(document).ready(function () {
             processData: false,
             async: true,
             success: function (data) {
-                // Get and display the result
+                var res = JSON.parse(JSON.stringify(data));
+                console.log(res.result);
+                var message = res.result == 0 ? $('.result-no').show() : $('.result-yes').show();
                 $('.loader').hide();
                 $('#result').fadeIn(600);
-                $('#result').text(' Result:  ' + data);
+                console.log(message);
+                // $('#result').text(message);
                 console.log('Success!');
             },
         });

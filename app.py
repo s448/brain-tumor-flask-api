@@ -1,9 +1,6 @@
 ﻿from __future__ import division, print_function
 from datetime import date
-import datetime
-import sys
 import os
-import glob
 from time import ctime
 import numpy as np
 

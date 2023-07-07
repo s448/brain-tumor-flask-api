@@ -3,8 +3,17 @@ $(document).ready(function () {
     $('.image-section').hide();
     $('.loader').hide();
     $('#result').hide();
-
+    $('.res').hide();
+    $('#form').hide();
+    // $('.close').hide();
     // Upload Preview
+
+    let startbtn = document.querySelector(".landing button");
+    startbtn.addEventListener("click",function () {
+        $('.landing').hide();
+        $('#form').show();
+    })
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -16,12 +25,18 @@ $(document).ready(function () {
             reader.readAsDataURL(input.files[0]);
         }
     }
+    let label = document.querySelector(".upload-label");
     $("#imageUpload").change(function () {
         $('.image-section').show();
         $('#btn-predict').show();
         $('#result').text('');
         $('#result').hide();
         readURL(this);
+        // $('.upload-label').hide();
+        $('.upload-label').text('Upload Another MRI Image');
+        let label = document.querySelector(".upload-label");
+        label.setAttribute("style","-webkit-transform: translate(0%, 0%);");
+
     });
 
     // Predict
@@ -31,7 +46,7 @@ $(document).ready(function () {
         // Show loading animation
         $(this).hide();
         $('.loader').show();
-
+        $('.upload-label').hide();
         // Make prediction by calling api /predict
         $.ajax({
             type: 'POST',
@@ -42,13 +57,29 @@ $(document).ready(function () {
             processData: false,
             async: true,
             success: function (data) {
-                // Get and display the result
+                var res = JSON.parse(JSON.stringify(data));
+                console.log(res.result);
+                var message = res.result == 0 ? $('.result-no').show() : $('.result-yes').show();
                 $('.loader').hide();
                 $('#result').fadeIn(600);
-                $('#result').text(' Result:  ' + data);
+                console.log(message);
+                // $('#result').text(message);
                 console.log('Success!');
             },
         });
     });
 
+    $('.open').click( function () {
+        $('.open').hide();
+        $('.close').show();
+        $('.names').show();
+        label.setAttribute("style","-webkit-transform: translate(0%, 100%);");
+    })
+
+    $('.close').click( function () {
+        $('.close').hide();
+        $('.open').show();
+        $('.names').hide();
+        label.setAttribute("style","-webkit-transform: translate(0%, 300%);");
+    })
 });

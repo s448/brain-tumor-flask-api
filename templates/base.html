@@ -14,12 +14,39 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Brain Tumor Detection Web App</a>
+        <div class="logo">
+            <a href="#">
+              <img src="../static/WhatsApp Image 2023-06-24 at 4.57.45 PM.jpeg" alt="pc-ver">
+              <img src="../static/photo_2023-07-01_02-44-17.jpg" alt="phone-ver">
+            </a>
+        </div>
+        <div>
+            <a class="navbar-brand" href="#"><p>Machine Learning-based <br> Tumor Classification for MRI Images</p></a>
+        </div>
+        <div class="logo-img">
+            <img src="../static/88597954961737.5970a760d136a.png" class="zag" alt="">
+            <img src="../static/logo.jpg" class="fci" alt="">
+            <!-- <div class="zag-contain"></div>
+            <div></div> -->
         </div>
     </nav>
+    <!-- start landing -->
+    <div class="landing">
+        <div class="container">
+            <div class="text">
+            <h3>Welcome To Our</h3>
+            <h2>Brain Tumor</h2>
+            <h2>classification</h2>
+            <span>Website</span>
+            </div>
+            <button>
+            <a href="#form">GET START</a>
+            </button>
+        </div>
+        </div>
+        <!-- end landing -->
     <div class="container">
-        <div id="content" style="margin-top:2em">{% block content %}{% endblock %}</div>
+        <div id="content">{% block content %}{% endblock %}</div>
     </div>
 </body>
 

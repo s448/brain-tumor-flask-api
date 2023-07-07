@@ -1,11 +1,6 @@
-﻿
-# Code by WisdomML
-## wisdomml.in
-
-from __future__ import division, print_function
+﻿from __future__ import division, print_function
 from datetime import date
 import datetime
-# coding=utf-8
 import sys
 import os
 import glob
@@ -13,7 +8,6 @@ from time import ctime
 import numpy as np
 
 # Keras
-
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
@@ -90,12 +84,7 @@ def upload():
          "result" : 1,
          "status" : 200
     }
-    return {
-         "result" : "invalid-input",
-         "status" : 403
-    }
 
-    #this section is used by gunicorn to serve the app on Heroku
 if __name__ == '__main__':
         app.run(debug=True, host="localhost", port=8080)
     #uncomment this section to serve the app locally with gevent at:  http://localhost:5000

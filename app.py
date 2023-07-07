@@ -1,4 +1,4 @@
-﻿from __future__ import division, print_function
+from __future__ import division, print_function
 from datetime import date
 import os
 from time import ctime
